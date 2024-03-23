@@ -16,43 +16,34 @@ class MyGridLayout(GridLayout):
         self.cols = 1
 
         #  Create a second gridlayout
-        self.top_grid = GridLayout()
+        self.top_grid = GridLayout(
+            row_force_default=True,
+            col_force_default=True,
+            row_default_height=50,
+            col_default_width=400
+        )
         self.top_grid.cols = 2
+        self.row_force_default = True
+        self.row_default_height = 110
+        self.col_force_default = True
+        self.col_default_width = 400
 
         #  Add Widgets
-        self.top_grid.add_widget(Label(
-            text="Name: ",
-            size_hint_y=None,  # has to be explicitly be stated
-            height=50,
-            size_hint_x=None,
-            width=400
-        ))
+        self.top_grid.add_widget(Label(text="Name: "))
         # Add Input Box
         self.name = TextInput(
-            multiline=False,
-            size_hint_y=None,  # has to be explicitly be stated
-            height=50,
-            size_hint_x=None,
-            width=400
+            # multiline=False,
+            # size_hint_y=None,  # has to be explicitly be stated
+            # height=50,
+            # size_hint_x=None,
+            # width=400
         )
         self.top_grid.add_widget(self.name)
 
         #  Add Widgets
-        self.top_grid.add_widget(Label(
-            text="Pizza: ",
-            size_hint_y=None,  # has to be explicitly be stated
-            height=50,
-            size_hint_x=None,
-            width=400
-        ))
+        self.top_grid.add_widget(Label(text="Pizza: "))
         # Add Input Box
-        self.pizza = TextInput(
-            multiline=False,
-            size_hint_y=None,  # has to be explicitly be stated
-            height=50,
-            size_hint_x=None,
-            width=400
-        )
+        self.pizza = TextInput(multiline=False)
         self.top_grid.add_widget(self.pizza)
 
         #  Add new top_grid to new app
