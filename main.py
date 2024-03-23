@@ -4,75 +4,29 @@ from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.uix.widget import Widget
+from kivy.properties import ObjectProperty
 
 
-class MyGridLayout(GridLayout):
-    #  Initialize infinite keywords
-    def __init__(self, **kwargs):
-        #  Call grid layout constructor
-        super(MyGridLayout, self).__init__(**kwargs)
+class MyGridLayout(Widget):
 
-        #  Set Columns
-        self.cols = 1
+    name = ObjectProperty(None)
+    pizza = ObjectProperty(None)
+    colour = ObjectProperty(None)
 
-        #  Create a second gridlayout
-        self.top_grid = GridLayout(
-            row_force_default=True,
-            col_force_default=True,
-            row_default_height=50,
-            col_default_width=400
-        )
-        self.top_grid.cols = 2
-        self.row_force_default = True
-        self.row_default_height = 110
-        self.col_force_default = True
-        self.col_default_width = 400
-
-        #  Add Widgets
-        self.top_grid.add_widget(Label(text="Name: "))
-        # Add Input Box
-        self.name = TextInput(
-            # multiline=False,
-            # size_hint_y=None,  # has to be explicitly be stated
-            # height=50,
-            # size_hint_x=None,
-            # width=400
-        )
-        self.top_grid.add_widget(self.name)
-
-        #  Add Widgets
-        self.top_grid.add_widget(Label(text="Pizza: "))
-        # Add Input Box
-        self.pizza = TextInput(multiline=False)
-        self.top_grid.add_widget(self.pizza)
-
-        #  Add new top_grid to new app
-        self.add_widget(self.top_grid)
-
-        #  Create a submit button
-        self.submit = Button(
-            text="Submit",
-            size_hint_y=None,  # has to be explicitly be stated
-            height=50,
-            size_hint_x=None,
-            width=200
-        )
-
-        #  Bind button for it to work
-        self.submit.bind(on_press=self.press)
-        self.add_widget(self.submit)
-
-    def press(self, instance):
+    def press(self):
         name = self.name.text
         pizza = self.pizza.text
+        colour = self.colour.text
 
-        # print(f'Hello {name} you like {pizza} pizza.')
+        print(f'Hello {name} you like {pizza} pizza. You love {colour}')
         # Print to screen
-        self.add_widget(Label(text=f'Hello {name} you like {pizza} pizza.'))
+        # self.add_widget(Label(text=f'Hello {name} you like {pizza} pizza.'))
 
         # Clear input boxes
         self.name.text = ''
         self.pizza.text = ''
+        self.colour.text = ''
 
 
 class MyApp(App):
