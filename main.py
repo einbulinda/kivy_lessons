@@ -20,22 +20,53 @@ class MyGridLayout(GridLayout):
         self.top_grid.cols = 2
 
         #  Add Widgets
-        self.top_grid.add_widget(Label(text="Name: "))
+        self.top_grid.add_widget(Label(
+            text="Name: ",
+            size_hint_y=None,  # has to be explicitly be stated
+            height=50,
+            size_hint_x=None,
+            width=400
+        ))
         # Add Input Box
-        self.name = TextInput(multiline=False)
+        self.name = TextInput(
+            multiline=False,
+            size_hint_y=None,  # has to be explicitly be stated
+            height=50,
+            size_hint_x=None,
+            width=400
+        )
         self.top_grid.add_widget(self.name)
 
         #  Add Widgets
-        self.top_grid.add_widget(Label(text="Pizza: "))
+        self.top_grid.add_widget(Label(
+            text="Pizza: ",
+            size_hint_y=None,  # has to be explicitly be stated
+            height=50,
+            size_hint_x=None,
+            width=400
+        ))
         # Add Input Box
-        self.pizza = TextInput(multiline=False)
+        self.pizza = TextInput(
+            multiline=False,
+            size_hint_y=None,  # has to be explicitly be stated
+            height=50,
+            size_hint_x=None,
+            width=400
+        )
         self.top_grid.add_widget(self.pizza)
 
         #  Add new top_grid to new app
         self.add_widget(self.top_grid)
 
         #  Create a submit button
-        self.submit = Button(text="Submit", font_size=32)
+        self.submit = Button(
+            text="Submit",
+            size_hint_y=None,  # has to be explicitly be stated
+            height=50,
+            size_hint_x=None,
+            width=200
+        )
+
         #  Bind button for it to work
         self.submit.bind(on_press=self.press)
         self.add_widget(self.submit)
