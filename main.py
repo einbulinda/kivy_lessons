@@ -13,19 +13,26 @@ class MyGridLayout(GridLayout):
         super(MyGridLayout, self).__init__(**kwargs)
 
         #  Set Columns
-        self.cols = 2
+        self.cols = 1
+
+        #  Create a second gridlayout
+        self.top_grid = GridLayout()
+        self.top_grid.cols = 2
 
         #  Add Widgets
-        self.add_widget(Label(text="Name: "))
+        self.top_grid.add_widget(Label(text="Name: "))
         # Add Input Box
         self.name = TextInput(multiline=False)
-        self.add_widget(self.name)
+        self.top_grid.add_widget(self.name)
 
         #  Add Widgets
-        self.add_widget(Label(text="Pizza: "))
+        self.top_grid.add_widget(Label(text="Pizza: "))
         # Add Input Box
         self.pizza = TextInput(multiline=False)
-        self.add_widget(self.pizza)
+        self.top_grid.add_widget(self.pizza)
+
+        #  Add new top_grid to new app
+        self.add_widget(self.top_grid)
 
         #  Create a submit button
         self.submit = Button(text="Submit", font_size=32)
